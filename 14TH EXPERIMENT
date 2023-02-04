@@ -1,0 +1,73 @@
+mysql> use saveetha;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_saveetha |
++--------------------+
+| empdept            |
+| employees          |
+| marks_view         |
+| mdept              |
+| mentee             |
+| mentees            |
+| mentees1           |
+| movie              |
+| per                |
+| sdept              |
+| students           |
+| studepartment      |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> desc students;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Rollno   | int(10)     | NO   | PRI | 0       |       |
+| Name     | varchar(10) | YES  |     | NULL    |       |
+| Gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | varchar(10) | YES  |     | NULL    |       |
+| mobileno | int(10)     | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| district | varchar(20) | YES  |     | NULL    |       |
+| dept     | varchar(5)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> create user Lavanya;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant all on student to Lavanya;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Lavanya;
++---------------------------------------------------------------+
+| Grants for Lavanya@%                                          |
++---------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Lavanya'@'%'                           |
+| GRANT ALL PRIVILEGES ON `saveetha`.`student` TO 'Lavanya'@'%' |
++---------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke all on student from Lavanya;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Lavanya;
++-------------------------------------+
+| Grants for Lavanya@%                |
++-------------------------------------+
+| GRANT USAGE ON *.* TO 'Lavanya'@'%' |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> grant select,update on employees to Lavanya;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Lavanya;
++-----------------------------------------------------------------+
+| Grants for Lavanya@%                                            |
++-----------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Lavanya'@'%'                             |
+| GRANT SELECT, UPDATE ON `saveetha`.`employees` TO 'Lavanya'@'%' |
++-----------------------------------------------------------------+
+2 rows in set (0.00 sec)
