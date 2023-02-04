@@ -1,0 +1,56 @@
+mysql> use saveetha;
+Database changed
+mysql> select*from mentees;
++-----------+-----------+------+---------+------------+-------+---------+
+| Regno     | Name      | Dept | Address | Fathername | Marks | Subject |
++-----------+-----------+------+---------+------------+-------+---------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |    91 | PDSD    |
+| 192224039 | Lavanya   | CSE  | Ongole  | Srinivas   |    99 | DBMS    |
+| 192222019 | Dharika   | Bio  | Hyd     | Uncle      |    80 | BioEvs  |
+| 192224032 | Harini    | CSE  | BZA     | Uncle      |    95 | DBMS    |
++-----------+-----------+------+---------+------------+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure mentee_info()
+    -> begin
+    -> select*from mentees;
+    -> end; //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call mentee_info();
+    -> //
++-----------+-----------+------+---------+------------+-------+---------+
+| Regno     | Name      | Dept | Address | Fathername | Marks | Subject |
++-----------+-----------+------+---------+------------+-------+---------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |    91 | PDSD    |
+| 192224039 | Lavanya   | CSE  | Ongole  | Srinivas   |    99 | DBMS    |
+| 192222019 | Dharika   | Bio  | Hyd     | Uncle      |    80 | BioEvs  |
+| 192224032 | Harini    | CSE  | BZA     | Uncle      |    95 | DBMS    |
++-----------+-----------+------+---------+------------+-------+---------+
+4 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create procedure whhile_looping()
+    -> begin
+    -> declare num int default 1;
+    -> declare res varchar(50) default '';
+    -> while num < 78125 do
+    -> set res = concat(res,num,',');
+    -> set num = num*5;
+    -> end while;
+    -> select res;
+    -> end //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call while_loop()
+    -> //
++----------------------------+
+| res                        |
++----------------------------+
+| 1,5,25,125,625,3125,15625, |
++----------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
